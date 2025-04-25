@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - Share-post{% endblock %}
+
+{% block body %}
+
+{% block page_title %}
+<div class= "container mt-3">
+<h1 class="mb-2 text-center"> Bienvenue sur Share-post </h1>
+<p class="text-center">Déposez vos annonces et trouvez ce que vous cherchez !</p>
+</div>
+{% endblock %}
+
+{% block content %}
+{% endblock %}
+<div class="container mt-5">
+    <h2 class="mb-4">Toutes les annonces</h2>
+
+    <div class="row">
+        {% for annonce in annonces %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ annonce.id }}.</h4>
+                        <h5 class="card-title"><u>{{ annonce.title }}</u></h5>
+                        <p class="card-text">{{ annonce.description|slice(0, 100) }}...</p>
+                        <p class="text-muted"><small>Publié le {{ annonce.createdAt|date('d/m/Y') }}</small></p>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <p>Aucune annonce pour le moment.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
